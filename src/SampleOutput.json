@@ -1,0 +1,50 @@
+{
+  "status": "ok",
+  "totalResults": 70,
+  "articles": [
+    {
+      "source": {
+        "id": "bloomberg",
+        "name": "Bloomberg"
+      },
+      "author": "Matthew Boesler, Craig Stirling",
+      "title": "US Jobs Report Set to Reveal Solid Growth, Steady Unemployment Rate - Bloomberg.com"
+    },
+
+    {
+      "source": {
+        "id": null,
+        "name": "Ctinsider.com"
+      },
+      "author": "Richard Chumney",
+      "title": "Salmonella outbreak tied to supplements sickens people in Connecticut, FDA says - CT Insider",
+      "description": "Two moringa-containing supplement products were recalled after a salmonella outbreak sickened 119 people nationwide, including several in Connecticut.",
+      "url": "https://www.ctinsider.com/news/article/supplement-recall-salmonella-connecticut-cases-22283996.php",
+      "urlToImage": "https://s.hdnux.com/photos/01/36/72/12/24879749/3/rawImage.jpg",
+      "publishedAt": "2026-05-30T19:01:18Z",
+      "content": "The Food and Drug Administration said..."
+    },
+
+    {
+      "source": {
+        "id": null,
+        "name": "Kotaku"
+      },
+      "author": "Zack Kotzer",
+      "title": "YouTuber Banned From Cedar Point After Eating Chicken Nuggets On Coaster - Kotaku",
+      "description": "Allen Ferrell has been barred from all Six Flags parks after smuggling McDonald's onto the Millennium Force",
+      "url": "https://kotaku.com/youtuber-banned-from-cedar-point-after-eating-chicken-nuggets-on-coaster-2000700818",
+      "urlToImage": "https://kotaku.com/app/uploads/2026/05/cedarpoint.jpg",
+      "publishedAt": "2026-05-30T18:45:27Z",
+      "content": "YouTuber Allen Ferrell..."
+    },
+
+    {
+      "source": {
+        "id": null,
+        "name": "Gizmodo.com"
+      },
+      "author": "Justin Caffier"
+    }
+  ]
+}

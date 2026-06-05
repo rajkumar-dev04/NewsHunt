@@ -14,14 +14,22 @@ export class StarBuzz extends Component {
     let url =
       "https://newsapi.org/v2/everything?q=bollywood%20celebrity%20india&apiKey=c051cc2707dc4b6485b99584bfdcdb37";
 
-    let response = await fetch(url);
-    let data = await response.json();
+    fetch(url)
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
 
-    console.log("StarBuzz API data:", data);
-
-    this.setState({
-      articles: data.articles || []
-    });
+    if (data.articles) {
+      this.setState({
+        articles: data.articles
+      });
+    }
+  })
+  .catch((error) => {
+    console.error("Error fetching news:", error);
+  });
   }
 
   render() {
@@ -30,7 +38,7 @@ export class StarBuzz extends Component {
         <h2>StarBuzz News</h2>
 
         <div className="row">
-          {this.state.articles.map((element) => {
+          {(this.state.articles || []).map((element) => {
             return (
               <div className="col-md-4" key={element.url}>
                 <Newsitem

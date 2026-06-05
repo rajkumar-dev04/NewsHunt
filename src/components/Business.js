@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Newsitem from './Newsitem';
 
 export class Business extends Component {
-
   constructor(props) {
     super(props);
 
@@ -11,16 +10,26 @@ export class Business extends Component {
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     let url =
-      "https://newsapi.org/v2/everything?q=india business&apiKey=c051cc2707dc4b6485b99584bfdcdb37";
+      "https://newsapi.org/v2/everything?q=india%20business&apiKey=c051cc2707dc4b6485b99584bfdcdb37";
 
-    let response = await fetch(url);
-    let data = await response.json();
+    fetch(url)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
 
-    this.setState({
-      articles: data.articles || []
-    });
+        if (data.articles) {
+          this.setState({
+            articles: data.articles
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching news:", error);
+      });
   }
 
   render() {
@@ -29,16 +38,18 @@ export class Business extends Component {
         <h2>Business News</h2>
 
         <div className="row">
-          {this.state.articles.map((element) => (
-            <div className="col-md-4" key={element.url}>
-              <Newsitem
-                title={element.title}
-                description={element.description}
-                newsUrl={element.url}
-                imageUrl={element.urlToImage}
-              />
-            </div>
-          ))}
+          {(this.state.articles || []).map((element) => {
+            return (
+              <div className="col-md-4" key={element.url}>
+                <Newsitem
+                  title={element.title}
+                  description={element.description}
+                  newsUrl={element.url}
+                  imageUrl={element.urlToImage}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     );

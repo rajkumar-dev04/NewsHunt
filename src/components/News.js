@@ -48,19 +48,29 @@ export class News extends Component {
     }
   }
   componentDidMount() {
-    let url="https://newsapi.org/v2/everything?q=india&apiKey=c051cc2707dc4b6485b99584bfdcdb37"
-    fetch(url).then((response) => {
-      return response.json();
-    }).then((data) => {
-      this.setState({ articles: data.articles })
-    }).catch((error) => {
-      console.error("Error fetching news:", error);
-    });
-  }
+  let url = "https://newsapi.org/v2/everything?q=india&apiKey=c051cc2707dc4b6485b99584bfdcdb37";
 
+fetch(url)
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log("API RESPONSE:", data);
+console.log("ARTICLES:", data.articles);
+    if (data.articles) {
+      this.setState({
+        articles: data.articles
+      });
+    }
+  })
+  .catch((error) => {
+    console.error("Error fetching news:", error);
+  });
+}
 
   render() {
-    let filteredArticles = this.state.articles.filter((article) => {
+    console.log("STATE ARTICLES:", this.state.articles);
+    let filteredArticles = (this.state.articles || []).filter((article) => {
   if (!this.props.searchText) {
     return true;
   }

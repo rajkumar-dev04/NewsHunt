@@ -25,13 +25,22 @@ export class Sports extends Component {
 
   componentDidMount() {
     let url = "https://newsapi.org/v2/everything?q=india sports&apiKey=c051cc2707dc4b6485b99584bfdcdb37";
-    fetch(url).then((response) => {
-      return response.json();
-    }).then((data) => {
-      this.setState({ articles: data.articles })
-    }).catch((error) => {
-      console.error("Error fetching news:", error);
-    });
+    fetch(url)
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+
+    if (data.articles) {
+      this.setState({
+        articles: data.articles
+      });
+    }
+  })
+  .catch((error) => {
+    console.error("Error fetching news:", error);
+  });
   }
 
   render() {
@@ -40,7 +49,7 @@ export class Sports extends Component {
         <h2>Sports News</h2>
 
         <div className="row">
-          {this.state.articles.map((element) => {
+         {(this.state.articles || []).map((element) => {
             return (
               <div className="col-md-4" key={element.title}>
                 <Newsitem
